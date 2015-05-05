@@ -1,8 +1,6 @@
-package com.atulos.osgi.console;
+package com.mooapi.osgi.console;
 
 import java.io.PrintStream;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import org.apache.felix.shell.ShellService;
 
 /**
@@ -35,15 +33,17 @@ public class OsgiConsole extends javax.swing.JFrame {
         sendButton = new javax.swing.JButton();
         clearButton = new javax.swing.JButton();
         splitPane = new javax.swing.JSplitPane();
-        helpScrollPane = new javax.swing.JScrollPane();
-        helpTable = new javax.swing.JTable();
-        jPanel1 = new javax.swing.JPanel();
+        consolePanel = new javax.swing.JPanel();
         consoleScrollPane = new javax.swing.JScrollPane();
         consoleTextArea = new javax.swing.JTextArea();
         scrListButton = new javax.swing.JButton();
         scrInfoButton = new javax.swing.JButton();
         scrInfoTextField = new javax.swing.JTextField();
-        separator = new javax.swing.JSeparator();
+        separator1 = new javax.swing.JSeparator();
+        separator2 = new javax.swing.JSeparator();
+        scrHelpButton = new javax.swing.JButton();
+        helpScrollPane = new javax.swing.JScrollPane();
+        helpTable = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -63,21 +63,6 @@ public class OsgiConsole extends javax.swing.JFrame {
 
         splitPane.setResizeWeight(0.5);
 
-        helpTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {},
-                {},
-                {},
-                {}
-            },
-            new String [] {
-
-            }
-        ));
-        helpScrollPane.setViewportView(helpTable);
-
-        splitPane.setRightComponent(helpScrollPane);
-
         consoleTextArea.setColumns(20);
         consoleTextArea.setRows(5);
         consoleScrollPane.setViewportView(consoleTextArea);
@@ -96,39 +81,60 @@ public class OsgiConsole extends javax.swing.JFrame {
             }
         });
 
-        separator.setOrientation(javax.swing.SwingConstants.VERTICAL);
+        separator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        separator2.setOrientation(javax.swing.SwingConstants.VERTICAL);
+
+        scrHelpButton.setText("?");
+        scrHelpButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                scrHelpButtonActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout consolePanelLayout = new javax.swing.GroupLayout(consolePanel);
+        consolePanel.setLayout(consolePanelLayout);
+        consolePanelLayout.setHorizontalGroup(
+            consolePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(consoleScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 475, Short.MAX_VALUE)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(consolePanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(scrListButton, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(separator, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(separator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(scrInfoTextField)
+                .addComponent(scrInfoTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 219, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(scrInfoButton))
+                .addComponent(scrInfoButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(separator2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(scrHelpButton, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        consolePanelLayout.setVerticalGroup(
+            consolePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(consolePanelLayout.createSequentialGroup()
                 .addComponent(consoleScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 703, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(separator)
-                        .addComponent(scrListButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(scrInfoButton)
-                        .addComponent(scrInfoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(consolePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(consolePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(consolePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(separator1)
+                            .addComponent(scrListButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(consolePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(scrInfoButton)
+                            .addComponent(scrInfoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(scrHelpButton)
+                    .addComponent(separator2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
-        splitPane.setLeftComponent(jPanel1);
+        splitPane.setLeftComponent(consolePanel);
+
+        helpTable.setModel(new HelpTableModel(shellService));
+        helpScrollPane.setViewportView(helpTable);
+
+        splitPane.setRightComponent(helpScrollPane);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -181,6 +187,10 @@ public class OsgiConsole extends javax.swing.JFrame {
         executeCommand("scr //sinfo//s" + scrInfoTextField.getText());
     }//GEN-LAST:event_scrInfoButtonActionPerformed
 
+    private void scrHelpButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_scrHelpButtonActionPerformed
+        executeCommand("scr //shelp//sx");
+    }//GEN-LAST:event_scrHelpButtonActionPerformed
+
 	private void executeCommand(String command) {
 		try {
 			shellService.executeCommand(command, consoleOutputStream, consoleErrorStream);
@@ -196,17 +206,18 @@ public class OsgiConsole extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton clearButton;
     private javax.swing.JTextField commandTextField;
+    private javax.swing.JPanel consolePanel;
     private javax.swing.JScrollPane consoleScrollPane;
     private javax.swing.JTextArea consoleTextArea;
     private javax.swing.JScrollPane helpScrollPane;
     private javax.swing.JTable helpTable;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton scrHelpButton;
     private javax.swing.JButton scrInfoButton;
     private javax.swing.JTextField scrInfoTextField;
     private javax.swing.JButton scrListButton;
     private javax.swing.JButton sendButton;
-    private javax.swing.JSeparator separator;
+    private javax.swing.JSeparator separator1;
+    private javax.swing.JSeparator separator2;
     private javax.swing.JSplitPane splitPane;
     // End of variables declaration//GEN-END:variables
 }

@@ -1,4 +1,4 @@
-package com.atulos.osgi.console;
+package com.mooapi.osgi.console;
 
 import java.util.HashMap;
 import java.util.Map;

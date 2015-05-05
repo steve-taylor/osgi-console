@@ -1,4 +1,4 @@
-package com.atulos.osgi.console;
+package com.mooapi.osgi.console;
 
 import java.io.IOException;
 import java.io.OutputStream;

@@ -1,4 +1,4 @@
-package com.atulos.osgi.console;
+package com.mooapi.osgi.console;
 
 import javax.swing.SwingUtilities;
 import org.apache.felix.scr.annotations.Activate;
